@@ -26,8 +26,6 @@ function getStringLength(value) {
   return value.length;
 }
 
-getStringLength('some string');
-
 /**
  * Returns true if the value is a string, otherwise returns false.
  *
@@ -42,8 +40,12 @@ getStringLength('some string');
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  if (typeof value === 'string' || value instanceof String) {
+    return true;
+  }
+
+  return false;
 }
 
 /**

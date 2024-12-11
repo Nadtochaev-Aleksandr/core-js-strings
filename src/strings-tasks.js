@@ -310,8 +310,11 @@ function reverseString(str) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  const strToArray = str.split('');
+  const sortArray = strToArray.sort();
+  const resultString = sortArray.join('');
+  return resultString;
 }
 
 /**
@@ -326,8 +329,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -344,8 +347,27 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  let vowelsCount = 0;
+  for (let i = 0; i <= str.length - 1; i += 1) {
+    if (
+      str[i] === 'a' ||
+      str[i] === 'e' ||
+      str[i] === 'i' ||
+      str[i] === 'o' ||
+      str[i] === 'u' ||
+      str[i] === 'y' ||
+      str[i] === 'A' ||
+      str[i] === 'E' ||
+      str[i] === 'I' ||
+      str[i] === 'O' ||
+      str[i] === 'U' ||
+      str[i] === 'Y'
+    ) {
+      vowelsCount += 1;
+    }
+  }
+  return vowelsCount;
 }
 
 /**
@@ -361,9 +383,27 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const strLower = str.toLowerCase();
+  const cleanStrLower = strLower.replace(/[^a-z0-9]/g, '');
+
+  function myreverseString(strng) {
+    let resultString = '';
+    for (let i = strng.length - 1; i >= 0; i -= 1) {
+      resultString += strng[i];
+    }
+    return resultString;
+  }
+
+  const palinomeString = myreverseString(cleanStrLower);
+
+  if (cleanStrLower === palinomeString) {
+    return true;
+  }
+  return false;
 }
+
+// const palinomeString = cleanStrLower.split('').reverse().join('');
 
 /**
  * Find the longest word in the sentence. If there are multiple longest words,
@@ -377,9 +417,22 @@ function isPalindrome(/* str */) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const separateText = sentence.split(' ');
+  let longestWorld = '';
+  for (let i = 0; i <= separateText.length - 1; i += 1) {
+    if (separateText[i].length > longestWorld.length) {
+      longestWorld = separateText[i];
+    }
+  }
+  return longestWorld;
 }
+
+// for (const elements of separateText) {
+//   if (elements.length > longestWorld.length) {
+//     longestWorld = elements;
+//   }
+// }
 
 /**
  * Returns the string where each word is reversed.

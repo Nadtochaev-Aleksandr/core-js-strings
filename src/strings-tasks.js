@@ -444,8 +444,14 @@ function findLongestWord(sentence) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  const separateText = str.split(' ');
+  for (let i = 0; i <= separateText.length - 1; i += 1) {
+    const reversedElement = reverseString(separateText[i]);
+    separateText[i] = reversedElement;
+  }
+  const resultString = separateText.join(' ');
+  return resultString;
 }
 
 /**
@@ -459,8 +465,16 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  let resultString = '';
+  for (let i = 0; i <= str.length - 1; i += 1) {
+    if (str[i] === str[i].toUpperCase()) {
+      resultString += str[i].toLowerCase();
+    } else {
+      resultString += str[i].toUpperCase();
+    }
+  }
+  return resultString;
 }
 
 /**
@@ -476,8 +490,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -490,8 +504,10 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  const cleanValue = value.slice(0, -1);
+  const splitValue = cleanValue.split(', ');
+  return splitValue[1];
 }
 
 /**
@@ -505,8 +521,8 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.replace(/[^a-z0-9]/g, '');
 }
 
 /**
@@ -524,8 +540,9 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  const resultString = str.split(';');
+  return resultString;
 }
 
 /**
@@ -547,6 +564,19 @@ function extractEmails(/* str */) {
 function encodeToRot13(/* str */) {
   throw new Error('Not implemented');
 }
+
+// let strCoppy = '';
+// for (let i = 0; i <= str.length - 1; i += 1) {
+//   if (str[i] !== '!' || str[i] !== '?') {
+//     const UTFcode = str.charCodeAt(i);
+//     const newCode = UTFcode + 13;
+//     const newLetter = String.fromCharCode(newCode);
+//     strCoppy += newLetter;
+//   } else {
+//     strCoppy += str[i];
+//   }
+// }
+// return strCoppy;
 
 /**
  * Returns playid card id.
@@ -572,9 +602,68 @@ function encodeToRot13(/* str */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const cardsListSepareted = [
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
+  ];
+  if (cardsListSepareted.includes(value)) {
+    return cardsListSepareted.indexOf(value);
+  }
+  return 'Введите обозначение карты';
 }
+// const cardsList = 'A♣, 2♣, 3♣, 4♣, 5♣, 6♣, 7♣, 8♣, 9♣, 10♣, J♣, Q♣, K♣, A♦, 2♦, 3♦, 4♦, 5♦, 6♦, 7♦, 8♦, 9♦, 10♦, J♦, Q♦, K♦, A♥, 2♥, 3♥, 4♥, 5♥, 6♥, 7♥, 8♥, 9♥, 10♥, J♥, Q♥, K♥, A♠, 2♠, 3♠, 4♠, 5♠, 6♠, 7♠, 8♠, 9♠, 10♠, J♠, Q♠, K♠';
+// const cardsListSepareted = cardsList.split(', ');
 
 module.exports = {
   getStringLength,
